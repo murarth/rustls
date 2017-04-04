@@ -42,7 +42,7 @@ fn test_reddit_cert() {
     anchors.add_trust_anchors(&webpki_roots::ROOTS);
     bench(100, "verify_server_cert(reddit)", 
           || (),
-          |_| verify::verify_server_cert(&anchors, &chain[..], "reddit.com").unwrap());
+          |_| verify::verify_server_cert(&anchors, &chain[..], "reddit.com", &[]).unwrap());
 }
 
 #[test]
@@ -54,7 +54,7 @@ fn test_github_cert() {
     anchors.add_trust_anchors(&webpki_roots::ROOTS);
     bench(100, "verify_server_cert(github)", 
           || (),
-          |_| verify::verify_server_cert(&anchors, &chain[..], "github.com").unwrap());
+          |_| verify::verify_server_cert(&anchors, &chain[..], "github.com", &[]).unwrap());
 }
 
 #[test]
@@ -67,7 +67,7 @@ fn test_arstechnica_cert() {
     anchors.add_trust_anchors(&webpki_roots::ROOTS);
     bench(100, "verify_server_cert(arstechnica)", 
           || (),
-          |_| verify::verify_server_cert(&anchors, &chain[..], "arstechnica.com").unwrap());
+          |_| verify::verify_server_cert(&anchors, &chain[..], "arstechnica.com", &[]).unwrap());
 }
 
 #[test]
@@ -80,7 +80,7 @@ fn test_servo_cert() {
     anchors.add_trust_anchors(&webpki_roots::ROOTS);
     bench(100, "verify_server_cert(servo)", 
           || (),
-          |_| verify::verify_server_cert(&anchors, &chain[..], "servo.org").unwrap());
+          |_| verify::verify_server_cert(&anchors, &chain[..], "servo.org", &[]).unwrap());
 }
 
 #[test]
@@ -92,7 +92,7 @@ fn test_twitter_cert() {
     anchors.add_trust_anchors(&webpki_roots::ROOTS);
     bench(100, "verify_server_cert(twitter)", 
           || (),
-          |_| verify::verify_server_cert(&anchors, &chain[..], "twitter.com").unwrap());
+          |_| verify::verify_server_cert(&anchors, &chain[..], "twitter.com", &[]).unwrap());
 }
 
 #[test]
@@ -104,7 +104,7 @@ fn test_wikipedia_cert() {
     anchors.add_trust_anchors(&webpki_roots::ROOTS);
     bench(100, "verify_server_cert(wikipedia)", 
           || (),
-          |_| verify::verify_server_cert(&anchors, &chain[..], "wikipedia.org").unwrap());
+          |_| verify::verify_server_cert(&anchors, &chain[..], "wikipedia.org", &[]).unwrap());
 }
 
 #[test]
@@ -117,7 +117,7 @@ fn test_google_cert() {
     anchors.add_trust_anchors(&webpki_roots::ROOTS);
     bench(100, "verify_server_cert(google)", 
           || (),
-          |_| verify::verify_server_cert(&anchors, &chain[..], "www.google.com").unwrap());
+          |_| verify::verify_server_cert(&anchors, &chain[..], "www.google.com", &[]).unwrap());
 }
 
 #[test]
@@ -130,7 +130,7 @@ fn test_hn_cert() {
     anchors.add_trust_anchors(&webpki_roots::ROOTS);
     bench(100, "verify_server_cert(hn)", 
           || (),
-          |_| verify::verify_server_cert(&anchors, &chain[..], "news.ycombinator.com").unwrap());
+          |_| verify::verify_server_cert(&anchors, &chain[..], "news.ycombinator.com", &[]).unwrap());
 }
 
 #[test]
@@ -142,7 +142,7 @@ fn test_stackoverflow_cert() {
     anchors.add_trust_anchors(&webpki_roots::ROOTS);
     bench(100, "verify_server_cert(stackoverflow)", 
           || (),
-          |_| verify::verify_server_cert(&anchors, &chain[..], "stackoverflow.com").unwrap());
+          |_| verify::verify_server_cert(&anchors, &chain[..], "stackoverflow.com", &[]).unwrap());
 }
 
 #[test]
@@ -154,7 +154,7 @@ fn test_duckduckgo_cert() {
     anchors.add_trust_anchors(&webpki_roots::ROOTS);
     bench(100, "verify_server_cert(duckduckgo)", 
           || (),
-          |_| verify::verify_server_cert(&anchors, &chain[..], "duckduckgo.com").unwrap());
+          |_| verify::verify_server_cert(&anchors, &chain[..], "duckduckgo.com", &[]).unwrap());
 }
 
 #[test]
@@ -167,7 +167,7 @@ fn test_rustlang_cert() {
     anchors.add_trust_anchors(&webpki_roots::ROOTS);
     bench(100, "verify_server_cert(rustlang)", 
           || (),
-          |_| verify::verify_server_cert(&anchors, &chain[..], "www.rust-lang.org").unwrap());
+          |_| verify::verify_server_cert(&anchors, &chain[..], "www.rust-lang.org", &[]).unwrap());
 }
 
 #[test]
@@ -180,6 +180,6 @@ fn test_wapo_cert() {
     anchors.add_trust_anchors(&webpki_roots::ROOTS);
     bench(100, "verify_server_cert(wapo)", 
           || (),
-          |_| verify::verify_server_cert(&anchors, &chain[..], "www.washingtonpost.com").unwrap());
+          |_| verify::verify_server_cert(&anchors, &chain[..], "www.washingtonpost.com", &[]).unwrap());
 }
 

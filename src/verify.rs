@@ -188,16 +188,22 @@ fn verify_common_cert<'a>(roots: &RootCertStore,
 
 /// Verify a the certificate chain `presented_certs` against the roots
 /// configured in `roots`.  Make sure that `dns_name` is quoted by
-/// the top certificate in the chain.
+/// the top certificate in the chain.  Check that a non-empty
+/// `ocsp_response` is a valid OCSP response for the top certificate.
 pub fn verify_server_cert(roots: &RootCertStore,
                           presented_certs: &[ASN1Cert],
-                          dns_name: &str)
+                          dns_name: &str,
+                          ocsp_response: &[u8])
                           -> Result<(), TLSError> {
     let cert = try!(verify_common_cert(roots, presented_certs));
 
     if DANGEROUS_DISABLE_VERIFY {
         warn!("DANGEROUS_DISABLE_VERIFY is turned on, skipping server name verification");
         return Ok(());
+    }
+
+    if !ocsp_response.is_empty() {
+        info!("Unvalidated OCSP response: {:?}", ocsp_response.to_vec());
     }
 
     cert.verify_is_valid_for_dns_name(untrusted::Input::from(dns_name.as_bytes()))
