@@ -328,6 +328,7 @@ fn main() {
             "-expect-advertised-alpn" |
             "-expect-alpn" |
             "-expect-server-name" |
+            "-expect-ocsp-response" |
             "-expect-certificate-types" => {
                 println!("not checking {} {}; NYI", arg, args.remove(0));
             }
@@ -362,6 +363,8 @@ fn main() {
             "-expect-session-miss" |
             "-expect-extended-master-secret" |
             "-expect-ticket-renewal" |
+            "-verify-peer" |
+            "-enable-ocsp-stapling" |
             // internal openssl details:
             "-async" |
             "-implicit-handshake" |
@@ -370,7 +373,6 @@ fn main() {
 
             // Not implemented things
             "-dtls" |
-            "-enable-ocsp-stapling" |
             "-cipher" |
             "-psk" |
             "-renegotiate-freely" |
@@ -380,10 +382,8 @@ fn main() {
             "-fail-cert-callback" |
             "-install-ddos-callback" |
             "-enable-signed-cert-timestamps" |
-            "-ocsp-response" |
             "-advertise-npn" |
             "-verify-fail" |
-            "-verify-peer" |
             "-expect-channel-id" |
             "-shim-shuts-down" |
             "-check-close-notify" |
